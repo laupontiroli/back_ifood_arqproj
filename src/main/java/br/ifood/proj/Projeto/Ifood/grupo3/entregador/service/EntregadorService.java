@@ -40,7 +40,6 @@ public class EntregadorService {
 
         if (entregador != null) {
             entregadorRepository.delete(entregador);
-            throw new RuntimeException("Entregador deletado com sucesso!");
         }
 
         else {
@@ -52,9 +51,16 @@ public class EntregadorService {
         Entregador entregador = entregadorRepository.findByCpf(cpf);
 
         if (entregador != null) {
-            entregador.setTipoVeiculo(editarEntregadorDTO.getTipoVeiculo());
-            entregador.setPrecoViagem(editarEntregadorDTO.getPrecoViagem());
-            entregador.setStatus(editarEntregadorDTO.getStatus());
+
+            if (editarEntregadorDTO.getTipoVeiculo() != null) {
+                entregador.setTipoVeiculo(editarEntregadorDTO.getTipoVeiculo());
+            }
+            if (editarEntregadorDTO.getPrecoViagem() != null) {
+                entregador.setPrecoViagem(editarEntregadorDTO.getPrecoViagem());
+            }
+            if (editarEntregadorDTO.getStatus() != null) {
+                entregador.setStatus(editarEntregadorDTO.getStatus());
+            }
             return entregadorRepository.save(entregador);
         }
 

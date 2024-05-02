@@ -22,6 +22,8 @@ public class Entregador {
     @Column(nullable = false)
     private String status;
 
+    public Entregador() {}
+
     public Entregador(String cpf, String nome, String tipoVeiculo, Float precoViagem, String status) {
         this.cpf = cpf;
         this.nome = nome;
@@ -29,7 +31,6 @@ public class Entregador {
         this.precoViagem = precoViagem;
         this.status = status;
     }
-
     public String getCpf() {
         return cpf;
     }
