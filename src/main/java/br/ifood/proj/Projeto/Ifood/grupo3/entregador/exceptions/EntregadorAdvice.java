@@ -1,6 +1,7 @@
-package br.ifood.proj.Projeto.Ifood.grupo3.entregador;
+package br.ifood.proj.Projeto.Ifood.grupo3.entregador.exceptions;
 
 import br.ifood.proj.Projeto.Ifood.grupo3.entregador.common.Erro;
+import br.ifood.proj.Projeto.Ifood.grupo3.entregador.exceptions.EntregadorNaoEncontradoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

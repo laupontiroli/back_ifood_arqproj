@@ -1,13 +1,12 @@
 package br.ifood.proj.Projeto.Ifood.grupo3.entregador.service;
 
 import br.ifood.proj.Projeto.Ifood.grupo3.entregador.DTO.EditarEntregadorDTO;
-import br.ifood.proj.Projeto.Ifood.grupo3.entregador.EntregadorNaoEncontradoException;
+import br.ifood.proj.Projeto.Ifood.grupo3.entregador.exceptions.EntregadorNaoEncontradoException;
 import br.ifood.proj.Projeto.Ifood.grupo3.entregador.model.Entregador;
 import br.ifood.proj.Projeto.Ifood.grupo3.entregador.repository.EntregadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
