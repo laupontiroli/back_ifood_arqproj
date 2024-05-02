@@ -1,6 +1,9 @@
 package br.ifood.proj.Projeto.Ifood.grupo3.entregador.service;
 
+import br.ifood.proj.Projeto.Ifood.grupo3.entregador.DTO.EditarEntregadorDTO;
+import br.ifood.proj.Projeto.Ifood.grupo3.entregador.EntregadorNaoEncontradoException;
 import br.ifood.proj.Projeto.Ifood.grupo3.entregador.model.Entregador;
+import br.ifood.proj.Projeto.Ifood.grupo3.entregador.repository.EntregadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +25,6 @@ public class EntregadorService {
     }
 
     public List<Entregador> listarEntregadores() {
-
         return entregadorRepository.findAll();
     }
 
@@ -31,7 +33,7 @@ public class EntregadorService {
         if (entregadores.size() > 0) {
             return entregadores.get(0);
         }
-        throw new RuntimeException("Entregador não encontrado");
+        throw new EntregadorNaoEncontradoException("Entregadores " + status + " não encontrados!");
     }
 
     public void deletarEntregador(String cpf) {
@@ -43,9 +45,26 @@ public class EntregadorService {
         }
 
         else {
-            throw new RuntimeException("Entregador não encontrado!");
+            throw new EntregadorNaoEncontradoException("Entregador " + cpf + " não encontrado!");
         }
     }
+
+    public Entregador editarEntregador(String cpf, EditarEntregadorDTO editarEntregadorDTO) {
+        Entregador entregador = entregadorRepository.findByCpf(cpf);
+
+        if (entregador != null) {
+            entregador.setTipoVeiculo(editarEntregadorDTO.getTipoVeiculo());
+            entregador.setPrecoViagem(editarEntregadorDTO.getPrecoViagem());
+            entregador.setStatus(editarEntregadorDTO.getStatus());
+            return entregadorRepository.save(entregador);
+        }
+
+        else {
+            throw new EntregadorNaoEncontradoException("Entregador " + cpf + " não encontrado!");
+        }
+    }
+
+
 
 
 

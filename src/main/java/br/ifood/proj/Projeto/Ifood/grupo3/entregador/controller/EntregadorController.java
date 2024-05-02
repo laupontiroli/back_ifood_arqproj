@@ -37,7 +37,7 @@ public class EntregadorController {
 
     @PostMapping("/entregador/{cpf}")
     public Entregador editarEntregador(@PathVariable String cpf, @RequestBody EditarEntregadorDTO entregador) {
-        return entregadorService.editarEntregador(entregador);
+        return entregadorService.editarEntregador(cpf, entregador);
     }
 
 
