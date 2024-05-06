@@ -27,12 +27,20 @@ public class EntregadorService {
         return entregadorRepository.findAll();
     }
 
-    public Entregador getEntregadorDisponivel(String status) {
-        List<Entregador> entregadores = entregadorRepository.findByStatus(status);
+    public Entregador getEntregadorDisponivel() {
+        List<Entregador> entregadores = entregadorRepository.findByStatus("DISPONIVEL");
         if (entregadores.size() > 0) {
             return entregadores.get(0);
         }
-        throw new EntregadorNaoEncontradoException("Entregadores " + status + " não encontrados!");
+        throw new EntregadorNaoEncontradoException("Entregadores disponíveis não encontrados!");
+    }
+
+    public Entregador getEntregadorCpf(String cpf) {
+        Entregador entregador = entregadorRepository.findByCpf(cpf);
+        if (entregador != null) {
+            return entregador;
+        }
+        throw new EntregadorNaoEncontradoException("Entregador " + cpf + " não encontrado!");
     }
 
     public void deletarEntregador(String cpf) {

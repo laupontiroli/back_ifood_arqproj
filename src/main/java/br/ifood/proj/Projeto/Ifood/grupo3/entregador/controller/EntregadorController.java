@@ -25,9 +25,14 @@ public class EntregadorController {
         return entregadorService.listarEntregadores();
     }
 
-    @GetMapping("/entregador/{status}")
-    public Entregador getEntregadorStatus(@PathVariable String status) {
-        return entregadorService.getEntregadorDisponivel(status);
+    @GetMapping("/entregador/disponivel")
+    public Entregador getEntregadorStatus() {
+        return entregadorService.getEntregadorDisponivel();
+    }
+
+    @GetMapping("/entregador/d{cpf}")
+    public Entregador getEntregadorPorCpf(@PathVariable String cpf) {
+        return entregadorService.getEntregadorCpf(cpf);
     }
 
     @DeleteMapping("/entregador/{cpf}")
