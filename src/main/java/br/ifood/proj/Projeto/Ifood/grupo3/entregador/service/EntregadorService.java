@@ -77,6 +77,19 @@ public class EntregadorService {
         }
     }
 
+    public Entregador liberarEntregador(String cpf) {
+        Entregador entregador = entregadorRepository.findByCpf(cpf);
+
+        if (entregador != null) {
+            entregador.setStatus("DISPONIVEL");
+            return entregadorRepository.save(entregador);
+        }
+
+        else {
+            throw new EntregadorNaoEncontradoException("Entregador " + cpf + " não encontrado!");
+        }
+    }
+
 
 
 

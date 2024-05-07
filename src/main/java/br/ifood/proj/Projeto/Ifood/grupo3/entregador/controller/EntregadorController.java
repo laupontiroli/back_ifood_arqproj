@@ -45,6 +45,12 @@ public class EntregadorController {
         return entregadorService.editarEntregador(cpf, entregador);
     }
 
+    @PostMapping("/liberarentregador/{cpf}")
+    public Entregador liberarEntregador(@PathVariable String cpf) {
+        return entregadorService.liberarEntregador(cpf);
+    }
+
+
 
 
 
